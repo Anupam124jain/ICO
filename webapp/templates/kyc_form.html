@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% if user.kyc_set.get.is_approved %}
+  <p> Kyc is approved</p>
+  {% else %}
+  <p>Kyc is not approved</p>
+  {% endif %}
+  <br>
+  <h2>Kyc Form</h2>
+  <form class="form-group" method="post"  enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Submit Documents</button>
+  </form>
+{% endblock %}

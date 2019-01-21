@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <table class="table">
+
+    <tbody>
+      <tr>
+        <td>Token Name</td>
+        <td>{{ token.name }}</td>
+      </tr>
+      <tr>
+        <td>Token Symbol</td>
+        <td>{{ token.symbol }}</td>
+      </tr>
+      <tr>
+        <td>Token Price</td>
+        <td>{{ crowdsale.tokenRate }}   <span class="label label-info">(1 Ether=2000 ITK)</span></td>
+      </tr>
+      <tr>
+        <td>Token Supply</td>
+        <td>{{ token_supply }} <span>ITK</span></td>
+      </tr>
+      <tr>
+        <td>To display your token balance in your wallet, add following address:</td>
+        <td>{{ crowdsale_address }}</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
